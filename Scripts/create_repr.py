@@ -14,7 +14,7 @@ DATA = '%s/results/positions_per_alters/' % expanduser('~')
 NEW_DATA = '../Data/'
 
 def compute_list_egos():
-    list_egos = [ego.split('.')[0] for ego in listdir(DATA) if 'k4' in ego]
+    list_egos = [ego.split('_')[0] for ego in listdir(DATA) if 'k4' in ego]
     return list_egos
 
 LIST_EGOS = compute_list_egos()
@@ -40,7 +40,7 @@ GLOBAL_REPR = compute_global_repr()
 
 def compute_local_repr(ego):
     loc_repr = []
-    with open(DATA+'Positions/%s.csv' % ego, 'r') as to_read:
+    with open(DATA+'%s_k4.csv' % ego, 'r') as to_read:
         csv_r = csv.reader(to_read, delimiter = ';')
         for line in csv_r:
             temp = []
