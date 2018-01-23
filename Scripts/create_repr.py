@@ -66,7 +66,8 @@ def compute_local_repr(ego):
                 
             loc_repr.append(temp3)
     
-    with open(NEW_DATA+'Representativities/%s_k4.csv' % ego, 'w') as to_write:
+    with open(NEW_DATA+'Representativities/%s_k4.csv' % ego, 'w') as to_write:    
+        print ego
         csv_w = csv.writer(to_write, delimiter = ';')
         for alter in loc_repr:
             csv_w.writerow(alter)
