@@ -27,6 +27,7 @@ for ego in LIST_EGOS:
             list_variables.append([float(x) for x in line])
             
 t = corrcoef(list_variables)
+print list_variables
 print t
 
 with open('../Results/corrcoeff.csv', 'w') as to_write:
