@@ -10,7 +10,7 @@ import csv
 from os import listdir
 from numpy import corrcoef
 
-DATA = '../Data/'
+DATA = '../Data/Representativities/'
 
 def compute_list_egos():
     list_egos = [ego.split('_')[0] for ego in listdir(DATA) if 'k4' in ego]
