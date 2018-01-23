@@ -17,6 +17,7 @@ def compute_list_egos():
     return list_egos
 
 LIST_EGOS = compute_list_egos()
+print LIST_EGOS
 
 list_variables = []
 
