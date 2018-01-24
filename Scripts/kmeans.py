@@ -34,9 +34,9 @@ def get_data(list_egos):
                 
                 alter = line[0]
                 alters.append(alter)
-                orbits_per_alter[alter] = line[POS[0]:POS[-1]]
+                orbits_per_alter[alter] = [int(x) for x in line[POS[0]:POS[-1]]]
                 for i in POS:
-                    all_orbits[i] += line[i+1]
+                    all_orbits[i] += int(line[i+1])
                 ego_per_alter[alter] = ego
         
                 
