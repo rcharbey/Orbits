@@ -21,7 +21,7 @@ def compute_list_egos():
 
 LIST_EGOS = compute_list_egos()
 
-random_egos = random.sample(LIST_EGOS, 50)
+random_egos = random.sample(LIST_EGOS, 100)
 
 list_variables = []
 
