@@ -10,7 +10,7 @@ import csv
 import random
 import pandas as pd
 from sklearn.metrics import silhouette_samples
-from sklearn import KMeans
+from sklearn.cluster import KMeans
 import numpy as np
 
 from utils import LIST_EGOS, POS
