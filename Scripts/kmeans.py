@@ -29,7 +29,7 @@ def get_data(list_egos):
             csvr = csv.reader(to_read, delimiter = ';')
             for line in csvr:
                 
-                if sum([float(i) for i in line[1:]]) == 0:
+                if sum([line[orbit] for orbit in ORBITS]) == 0:
                     continue
                 
                 alter = line[0]
@@ -43,11 +43,10 @@ def get_data(list_egos):
     prop_all = {orbit : all_orbits[orbit] / float(sum(all_orbits.values())) for orbit in all_orbits}
     repr_per_alter = {alter : {} for alter in alters}
     for alter in alters:
+        
+        sum_orbits_this_alter = float(sum(orbits_per_alter[alter].values()))
         for orbit in ORBITS:
-            print orbit
-            print orbits_per_alter[alter][orbit]
-            print prop_all[orbit]
-            this_repr = (orbits_per_alter[alter][orbit] / float(sum(orbits_per_alter[alter].values()))) / prop_all[orbit]
+            this_repr = (orbits_per_alter[alter][orbit] / sum_orbits_this_alter) / prop_all[orbit]
             if this_repr > 2:
                 this_repr = 2 - 1 / this_repr
             repr_per_alter[alter][orbit] = this_repr 
