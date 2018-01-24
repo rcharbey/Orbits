@@ -36,7 +36,7 @@ def get_data(list_egos):
                 alters.append(alter)
                 orbits_per_alter[alter] = {orbit : int(line[orbit]) for orbit in ORBITS}
                 for orbit in ORBITS:
-                    all_orbits[i] += int(line[i])
+                    all_orbits[orbit] += int(line[orbit])
                 ego_per_alter[alter] = ego
         
                 
