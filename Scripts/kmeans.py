@@ -23,7 +23,7 @@ def get_data(list_egos):
     ego_per_alter = {}
     
     for ego in list_egos:
-        with open('../Data/Orbits/%s_k4.csv', 'r') as to_read:
+        with open('../Data/Orbits/%s_k4.csv' % ego, 'r') as to_read:
             csvr = csv.reader(to_read, delimiter = ';')
             for line in csvr:
                 
