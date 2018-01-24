@@ -17,7 +17,7 @@ import random
 from utils import LIST_EGOS
 
 random.seed()
-LIST_EGOS = random_sample(LIST_EGOS, 50)
+LIST_EGOS = random.sample(LIST_EGOS, 50)
 
 DATA = '../Data/Representativities/'
 
