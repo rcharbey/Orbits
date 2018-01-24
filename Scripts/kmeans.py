@@ -44,6 +44,9 @@ def get_data(list_egos):
     repr_per_alter = {alter : {} for alter in alters}
     for alter in alters:
         for orbit in orbits_per_alter[alter]:
+            print orbit
+            print orbits_per_alter[alter][orbit]
+            print prop_all[orbit]
             this_repr = (orbits_per_alter[alter][orbit] / float(sum(orbits_per_alter[alter].values()))) / prop_all[orbit]
             if this_repr > 2:
                 this_repr = 2 - 1 / this_repr
