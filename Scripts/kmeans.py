@@ -18,10 +18,10 @@ from utils import LIST_EGOS
 random.seed()
 DATA = '../Data/Representativities/'
 
-POS = range(5, 16)
+ORBITS = range(5, 16)
 
 def get_data(list_egos):
-    alters, orbits_per_alter, all_orbits = [], {}, {i : 0 for i in POS}
+    alters, orbits_per_alter, all_orbits = [], {}, {orbit : 0 for orbit in ORBITS}
     ego_per_alter = {}
     
     for ego in list_egos:
@@ -34,8 +34,8 @@ def get_data(list_egos):
                 
                 alter = line[0]
                 alters.append(alter)
-                orbits_per_alter[alter] = [int(x) for x in line[POS[0]:POS[-1]]]
-                for i in POS:
+                orbits_per_alter[alter] = {orbit : int(line[orbit]) for orbit in ORBITS}
+                for orbit in ORBITS:
                     all_orbits[i] += int(line[i])
                 ego_per_alter[alter] = ego
         
@@ -43,7 +43,7 @@ def get_data(list_egos):
     prop_all = {orbit : all_orbits[orbit] / float(sum(all_orbits.values())) for orbit in all_orbits}
     repr_per_alter = {alter : {} for alter in alters}
     for alter in alters:
-        for orbit in orbits_per_alter[alter]:
+        for orbit in ORBITS:
             print orbit
             print orbits_per_alter[alter][orbit]
             print prop_all[orbit]
