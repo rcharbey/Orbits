@@ -8,7 +8,7 @@ Created on Tue Jan 23 12:02:55 2018
 
 import csv
 from os import listdir
-from numpy import corrcoeff
+from numpy import corrcoef
 import random
 import pandas as pd
 
