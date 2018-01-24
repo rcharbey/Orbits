@@ -32,13 +32,9 @@ for ego in random_egos:
             list_variables.append([float(x) for x in line])
             
 print '%s alters' % len(list_variables)
-print pd.DataFrame(list_variables).corr()
-            
-            
-#t = corrcoef(list_variables)
-t = []
+t =  pd.DataFrame(list_variables).corr()
 
-with open('../Results/corrcoeff.csv', 'w') as to_write:
+with open('../Results/corr.csv', 'w') as to_write:
     csvw = csv.writer(to_write, delimiter = ';')
     for row in t:
         csvw.writerow(row)

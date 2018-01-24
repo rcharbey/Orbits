@@ -17,9 +17,6 @@ def compute_list_egos():
     list_egos = [ego.split('_')[0] for ego in listdir(DATA) if 'k4' in ego]
     return list_egos
 
-LIST_EGOS = compute_list_egos()
-POS = range(4,15)
-
 def compute_global_repr():
     sum_each = {i : 0 for i in POS}
     for ego in listdir(DATA):
