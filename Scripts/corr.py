@@ -20,7 +20,7 @@ def compute_list_egos():
 
 LIST_EGOS = compute_list_egos()
 
-random_egos = random.sample(LIST_EGOS, 50)
+random_egos = random.sample(LIST_EGOS, 20)
 
 list_variables = []
 
@@ -29,6 +29,8 @@ for ego in random_egos:
         csv_r = csv.reader(to_read, delimiter = ';')
         for line in csv_r:
             list_variables.append([float(x) for x in line])
+            
+print '%s alters' % len(list_variables)
             
 t = corrcoef(list_variables)
 
