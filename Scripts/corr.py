@@ -31,9 +31,9 @@ for ego in random_egos:
         for line in csv_r:
             list_variables.append([float(x) for x in line])
             
-print pd.DataFrame(list_variables)
-            
 print '%s alters' % len(list_variables)
+print pd.DataFrame(list_variables).corr()
+            
             
 #t = corrcoef(list_variables)
 t = []
