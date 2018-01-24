@@ -8,8 +8,9 @@ Created on Tue Jan 23 12:02:55 2018
 
 import csv
 from os import listdir
-from numpy import corrcoef
+from numpy import corrcoeff
 import random
+import pandas as pd
 
 random.seed()
 DATA = '../Data/Representativities/'
@@ -20,7 +21,7 @@ def compute_list_egos():
 
 LIST_EGOS = compute_list_egos()
 
-random_egos = random.sample(LIST_EGOS, 20)
+random_egos = random.sample(LIST_EGOS, 50)
 
 list_variables = []
 
@@ -30,9 +31,12 @@ for ego in random_egos:
         for line in csv_r:
             list_variables.append([float(x) for x in line])
             
+print pd.DataFrame(list_variables)
+            
 print '%s alters' % len(list_variables)
             
-t = corrcoef(list_variables)
+#t = corrcoef(list_variables)
+t = []
 
 with open('../Results/corrcoeff.csv', 'w') as to_write:
     csvw = csv.writer(to_write, delimiter = ';')
