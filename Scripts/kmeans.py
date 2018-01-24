@@ -9,7 +9,8 @@ Created on Wed Jan 24 12:02:45 2018
 import csv
 import random
 import pandas as pd
-from sklearn import silhouette_samples, KMeans
+from sklearn.metrics import silhouette_samples
+from sklearn import KMeans
 import numpy as np
 
 from utils import LIST_EGOS, POS
