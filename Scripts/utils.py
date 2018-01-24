@@ -15,4 +15,3 @@ def compute_list_egos():
     return list_egos
 
 LIST_EGOS = compute_list_egos()
-POS = range(4,15)

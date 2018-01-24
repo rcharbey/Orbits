@@ -13,10 +13,12 @@ from sklearn.metrics import silhouette_samples
 from sklearn.cluster import KMeans
 import numpy as np
 
-from utils import LIST_EGOS, POS
+from utils import LIST_EGOS
 
 random.seed()
 DATA = '../Data/Representativities/'
+
+POS = range(5, 16)
 
 def get_data(list_egos):
     alters, orbits_per_alter, all_orbits = [], {}, {i : 0 for i in POS}
@@ -32,7 +34,7 @@ def get_data(list_egos):
                 
                 alter = line[0]
                 alters.append(alter)
-                orbits_per_alter[alter] = line[[x+1 for x in POS]]
+                orbits_per_alter[alter] = line[POS[0]:POS[-1]]
                 for i in POS:
                     all_orbits[i] += line[i+1]
                 ego_per_alter[alter] = ego
