@@ -29,7 +29,7 @@ def get_data(list_egos):
             csvr = csv.reader(to_read, delimiter = ';')
             for line in csvr:
                 
-                if sum([line[orbit] for orbit in ORBITS]) == 0:
+                if sum([int(line[orbit]) for orbit in ORBITS]) == 0:
                     continue
                 
                 alter = line[0]
