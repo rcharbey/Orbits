@@ -18,7 +18,6 @@ from utils import LIST_EGOS
 
 random.seed()
 LIST_EGOS = random.sample(LIST_EGOS, 50)
-LIST_EGOS = ['aaa41bbc6def0092d1a4c0810ef73cd4']
 
 DATA = '../Data/Representativities/'
 
