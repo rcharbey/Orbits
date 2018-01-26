@@ -18,6 +18,7 @@ from utils import LIST_EGOS
 
 random.seed()
 LIST_EGOS = random.sample(LIST_EGOS, 50)
+LIST_EGOS = ['aaa41bbc6def0092d1a4c0810ef73cd4']
 
 DATA = '../Data/Representativities/'
 
@@ -43,21 +44,24 @@ def get_data(list_egos):
                 ego_per_alter[alter] = ego
         
                 
-    prop_all = {orbit : all_orbits[orbit] / float(sum(all_orbits.values())) for orbit in all_orbits}
+    relative_freq = {orbit : all_orbits[orbit] / float(sum(all_orbits.values())) for orbit in all_orbits}
     repr_per_alter = {alter : {} for alter in alters}
     for alter in alters:
         
         sum_orbits_this_alter = float(sum(orbits_per_alter[alter].values()))
         for orbit in ORBITS:
-            this_repr = (orbits_per_alter[alter][orbit] / sum_orbits_this_alter) / prop_all[orbit]
+            this_repr = (orbits_per_alter[alter][orbit] / sum_orbits_this_alter) / relative_freq[orbit]
             if this_repr > 2:
                 this_repr = 2 - 1 / this_repr
             repr_per_alter[alter][orbit] = this_repr 
                 
-    return alters, orbits_per_alter, repr_per_alter, prop_all, ego_per_alter
+    return alters, orbits_per_alter, repr_per_alter, relative_freq, ego_per_alter
 
 
 ALTERS, ORBITS_PER_ALTER, REPR_PER_ALTER, RELATIVE_FREQ, EGO_PER_ALTER = get_data(LIST_EGOS)
+print RELATIVE_FREQ
+print '_____________________________________'
+#print REPR_PER_ALTER
 
 
 def get_classe_representativity(list_of_alters):
@@ -68,6 +72,7 @@ def get_classe_representativity(list_of_alters):
     
     all_orbits = float(sum(s.values()))
     local_representativities = {x : s[x]/all_orbits for x in s}
+    print local_representativities
     
     result = {}
     for orbit in local_representativities:
@@ -93,7 +98,8 @@ def kmeans_all(data):
             
         ref_ego = EGO_PER_ALTER.values()[0]
         directory = '../Results/KMeans/Typo_%s/%s' % (k_value, ref_ego)
-        os.mkdir(directory)
+        if not os.path.exists(directory):
+            os.mkdir(directory)
         alters_par_classe = {}
         
         members_per_cluster = [[labels_max == k] for k in range(k_value)]
@@ -129,12 +135,11 @@ def kmeans_all(data):
                     row.append(repr_par_classe[classe][orbit])                    
                 csv_w.writerow(row)      
 
-        print 'silhouette k = %s : %s' % (k_value, round(s_max,3))  
-        print kmeans.cluster_centers_
+        print 'silhouette k = %s : %s' % (k_value, round(s_max,3))
         
         
 k = 5
-K_VALUES = [5]
+K_VALUES = range(5,10)
 
 DATA_CALC = pd.DataFrame.from_dict(REPR_PER_ALTER, orient = 'index')
 kmeans_all(DATA_CALC)
