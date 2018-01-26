@@ -91,7 +91,7 @@ def kmeans_all(data):
                 labels_max = kmeans.labels_
                 s_max = s
             
-        ref_ego = EGO_PER_ALTER.value()[0]
+        ref_ego = EGO_PER_ALTER.values()[0]
         directory = '../Results/KMeans/Typo_%s/%s' % (k_value, ref_ego)
         os.mkdir(directory)
         alters_par_classe = {}
